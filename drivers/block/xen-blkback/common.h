@@ -269,7 +269,7 @@ static inline void blkif_get_x86_32_req(struct blkif_request *dst,
 					struct blkif_x86_32_request *src)
 {
 	int i, n = BLKIF_MAX_SEGMENTS_PER_REQUEST;
-	dst->operation = READ_ONCE(src->operation);
+	dst->operation = ACCESS_ONCE(src->operation);
 	switch (dst->operation) {
 	case BLKIF_OP_READ:
 	case BLKIF_OP_WRITE:
@@ -305,7 +305,11 @@ static inline void blkif_get_x86_64_req(struct blkif_request *dst,
 					struct blkif_x86_64_request *src)
 {
 	int i, n = BLKIF_MAX_SEGMENTS_PER_REQUEST;
+<<<<<<< HEAD
 	dst->operation = READ_ONCE(src->operation);
+=======
+	dst->operation = ACCESS_ONCE(src->operation);
+>>>>>>> a514516f8057ae9b7fed6c8276ac5b2dd3cffc30
 	switch (dst->operation) {
 	case BLKIF_OP_READ:
 	case BLKIF_OP_WRITE:
